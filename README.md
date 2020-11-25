@@ -1,6 +1,8 @@
 # AppWebClientsIretail
+Este proyecto fue generado con Angular CLI , versión 6.
+Se ha utilizado Bootstrap 4.
+Se encuentra alojado en el hosting de firebase https://irtech-app.firebaseapp.com/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
 ## Development server
 

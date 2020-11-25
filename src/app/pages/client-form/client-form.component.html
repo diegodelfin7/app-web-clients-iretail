@@ -1,0 +1,45 @@
+<h3>Create Client</h3>
+<div class="panel-heading">
+  <div class="row">
+    <div class="col-md-10">
+      <h3 class="panel-title"></h3>
+    </div>
+    <div class="col-md-2" align="right">
+      <a routerLink="/clients"  class="btn btn-primary">All Client</a>
+    </div>
+  </div>
+</div>
+<form [formGroup]="formClient">
+  <div class="form-group">
+    <label for="inputFirstname">First Name</label>
+    <input type="text" class="form-control"  placeholder="First Name" name="firstName" formControlName="firstName">
+    <span  class="text-danger" *ngIf="formClient.get('firstName').hasError('required') && formClient.get('firstName').touched">
+      First Name is required
+    </span>
+  </div>
+  
+  <div class="form-group">
+    <label for="InputLastName">Last Name</label>
+    <input type="text" class="form-control"  placeholder="Last Name" name="lastName" formControlName="lastName">
+    <span class="text-danger" *ngIf="formClient.get('lastName').hasError('required') && formClient.get('lastName').touched">Last Name is required</span>
+  </div>
+  <div class="form-group">
+    <label for="inputAge">Age</label>
+    <input type="text" class="form-control"  placeholder="Age" name="age" formControlName="age">
+    <span class="text-danger" *ngIf="formClient.get('age').hasError('required') && formClient.get('age').touched">Age is required</span>
+  </div>
+  <div class="form-group">
+    <label for="inputDateBirthday">Birthday</label>
+    <input type="date" class="form-control" placeholder="Birthday" name="birthday" formControlName="birthday">
+    <span class="text-danger" *ngIf="formClient.get('birthday').hasError('required') && formClient.get('birthday').touched">Birthday is required</span>
+  </div>
+  
+  <div class="form-group">
+    <button type="submit" class="btn btn-success" [disabled]="!formClient.valid" (click)="save()">Guardar</button>
+  </div>
+</form>
+<div class="d-flex justify-content-center"  style="width: 100%; height: 3rem;" *ngIf="loading">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<h3>List Clients</h3>
+<div *ngIf="!loading">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-10">
+        <div>
+          <span class="">Average ages for clients is :  {{ ageAvg}}</span>
+        </div>
+        <div>
+          <span class="">Standar Deviation ages for clients is : {{ageStdDeviation}} </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10"></div>
+      <div class="col-md-2" align="right" style="margin-bottom: 10px;">
+        <a routerLink="/add-client"  class="btn btn-success">Add Client</a>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Life expectancy</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let client of clients; let i = index'>
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ client.firstName }}</td>
+        <td>{{ client.lastName }}</td>
+        <td>{{ client.age }}</td>
+        <td>{{ client.birthday | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ calculateDeathDay(client) | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <button (click)="deleteClient(client,i)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="d-flex justify-content-center"  style="width: 100%; height: 3rem;" *ngIf="loading">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
